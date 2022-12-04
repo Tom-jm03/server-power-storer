@@ -1,0 +1,16 @@
+version: '2.8'
+
+
+services:
+ docker-python:
+  restart: unless-stopped
+  image: tom/python-power-getter:latest
+  networks:
+    - traefik-proxy
+  volumes:
+    - /srv/services/server-power-storer/data/usage.db:/app/usage.db
+  environment:
+    - TZ=Europe/Berlin
+networks:
+  traefik-proxy:
+    external: true
