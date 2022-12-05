@@ -13,6 +13,10 @@ c.execute("""CREATE TABLE IF NOT EXISTS power_consumption (
 conn.commit()
 counter = 1
 while True:
+    hour = time.localtime().tm_hour
+    day = time.localtime().tm_mday
+    month = time.localtime().tm_mon
+    year = time.localtime().tm_year
     minute = []
     hours = []
     if counter < 2:
@@ -23,10 +27,6 @@ while True:
     print("Starting to get data")
     for i in range(60):
         print(f"{i} minutes")
-        hour = time.localtime().tm_hour
-        day = time.localtime().tm_mday
-        month = time.localtime().tm_mon
-        year = time.localtime().tm_year
         for i in range(1, 60):
             print(f"Getting data for second {i}")
             time.sleep(1)
